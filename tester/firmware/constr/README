@@ -1,0 +1,8 @@
+Constraints files
+
+demo-final : last distributed demoboard (final BGA package)
+demo-final : prototype of demo-final (final BGA package - and test socket)
+test-generic : EDA board with generic package
+tester-chiponboard : Testboard ("the black") with wirebonded chip
+
+ 

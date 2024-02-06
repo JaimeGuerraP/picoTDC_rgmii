@@ -1,0 +1,63 @@
+In order to install the IPBus library, follow the software readme file.
+
+To generate the IPbus addresses .vhdl file:
+
+- source the environment 
+- cd firmware
+- make dynamic_vhdl 
+
+To build the FPGA Top project:
+
+- Check the installation of openpyxl library. Otherwise sudo apt-get install python3-openpyxl
+
+- make init         = Initialize the project
+- make compile		= Compile the project
+- make implement	= Implement the project
+- make program		= Program FPGA
+(NOTE: you need to have djtgcfg installed.. and, of course, an fpga board connected)
+
+If after program, you get: "sh: 1: gvim: not found"
+install gvim with: 
+$ sudo apt install vim-gtk3
+(just the editor to display the reports)
+
+
+To check if the Digilent JTAG interface is correctly installed (djtgcfg):
+ djtgcfg -v
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Programming VC707 Virtex 7 BPI Flash
+
+1) Generate a bitstream (.bit) file in the normal way.
+
+2) Run this TCL command inside Vivado:
+
+$ write_cfgmem -format mcs -interface bpix16 -size 128 -loadbit "up 0x0 /path/to/bitfile.bit" -file mynewmcs.mcs
+
+(The bitfile is located in /firmware/bin)
+
+3) Open Vivado 
+
+4) Open Hardware Manager, open target board
+
+5) Add or Select a memory device:  mt28gu01gaax1e-bpi-x16 >>>> Program configuration memory device 
+
+7) Add your .mcs file to the Configuration File field
+
+8) Hit OK
+
+9) Right click on device >> Boot from Configuration Memory Device
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+-) Jtag inserted -> M0,M1,M2 (010, 101) you can program the FPGA
+-) M0,M1,M2 (101) -> BPI not working 
+-) M0,M1,M2 (010) -> BPI working | if jtag connected, press button to programm or by vivado | if jtag not connected will program it automatically from flash
+
+
+
+
+
+
+

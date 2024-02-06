@@ -80,7 +80,7 @@ begin
 		o   => clk125
 	);
 
-	gthclk: entity work.125_clock_shifter
+	gthclk: entity work.clock_125MHz_shifter
 		port map(
 			master125clk => clk125,
 			clk125 => clk125_s,

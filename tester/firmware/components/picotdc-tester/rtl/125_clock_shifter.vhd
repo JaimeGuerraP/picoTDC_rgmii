@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 library unisim;
 use unisim.VComponents.all;
 
-entity 125_clock_shifter is 
+entity clock_125MHz_shifter is 
     port (
         -- Add all your required ports here
         -- I highly recommend grouping them in types and subtypes if need be
@@ -18,9 +18,9 @@ entity 125_clock_shifter is
         clk125_90: out std_logic;
     );
 
-end 125_clock_shifter;
+end clock_125MHz_shifter;
     
-architecture rtl of 125_clock_shifter is
+architecture rtl of clock_125MHz_shifter is
     signal clk_125, clk_125_90, clk125_o, clk125_90_o, clkfb: std_logic;
 
 begin
